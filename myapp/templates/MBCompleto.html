@@ -1,0 +1,50 @@
+{% extends "layout.html" %} 
+ 
+ {% block content%}
+   {%from "_macros.html" import render_field%}
+ 
+   <div class="container">
+    <h1 class="text-center">Lista de Maestros</h1>
+    <div class="row">
+        <div class="col-12">
+           <a href="{{ url_for('ABCompleto') }}" class="btn btn-primary float-left mt-3">Lista de Alumnos</a>
+        </div>
+        <br>
+        <div class="col-12">
+            <a href="{{ url_for('indexM') }}" class="btn btn-primary float-left mt-3">Agregar</a>
+         </div>
+         <br>
+        <table class="table table-striped table-bordered">
+            <thead>
+                <tr class="tr_head">
+                    <th>Nombre</th>
+                    <th>Apellidos</th>
+                    <th>Correo</th>
+                    <th>Teléfono</th>
+                    <th>Materia</th>
+                    <th>Eliminar</th>
+                    <th>Modificar</th>
+                </tr>
+            </thead>
+            <tbody>
+                {%for row in maestros%}
+                <tr>
+                    <td>{{row.nombre}}</td>
+                    <td>{{row.apellidos}}</td>
+                    <td>{{row.email}}</td>
+                    <td>{{row.telefono}}</td>
+                    <td>{{row.materia}}</td>
+                    <td><a href="eliminarM?id={{row.idM}}" class="btn btn-danger">
+                        <i class="icon-remove icon-white"></i>Eliminar
+                    </a></td>
+                    <td><a href="modificarM?id={{row.idM}}" class="btn btn-warning">
+                        <i class="icon-warning icon-white"></i>Modificar
+                    </a></td>
+                </tr>
+                {%endfor%}
+            </tbody>
+        </table>
+    </div>
+   </div>
+ 
+{% endblock %}

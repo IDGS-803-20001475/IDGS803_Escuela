@@ -1,0 +1,23 @@
+{% extends "layout.html" %} 
+ 
+ {% block content%}
+   {%from "_macros.html" import render_field%}
+ 
+   <div class="container">
+    <div class="row">
+        <form name="sent" action="/eliminar" id="form1" method="POST">
+            <div class="row control-group">
+                <div class="form-group col-xs-12 float-label-form-group controls">
+                    {{render_field(form.id,class='form-control', readonly='readonly')}}
+                </div>
+            </div>
+            <input type="hidden" name="csrf_token" value="{{csrf_token()}}"/>
+            <input type="submit" id="eliminar" class="btn btn-danger" name="eliminar" value="eliminar">
+            <a href="ABCompleto" class="btn btn-success"> 
+                <i class="icon-warning icon-white"></i> Cancelar
+            </a>
+        </form>
+    </div>
+   </div>
+ 
+{% endblock %}
